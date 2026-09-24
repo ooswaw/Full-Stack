@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uswa Masood | Portfolio</title>
+<meta name="description" content="Portfolio of Uswa Masood, Computer Science student at Air University, Islamabad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#top" class="brand">Uswa Masood</a>
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Uswa Masood</h1>
+      <p class="role">Computer Science student building web, mobile and AI-powered apps.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </div>
+    </div>
+
+    <!-- PROFILE PICTURE CONTAINER: put your photo in this folder as profile.jpg -->
+    <figure class="photo">
+      <span class="photo-fallback" aria-hidden="true">UM</span>
+      <img src="uswapic.jpeg" alt="Portrait of Uswa Masood" onerror="this.remove()">
+    </figure>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section narrow">
+    <h2>About</h2>
+    <p>I'm a Computer Science student at Air University in Islamabad. I like turning ideas into working apps, from a Flutter movie tracker to a Qt safety system and a gamified task manager built with Blazor and ML.NET.</p>
+    <p>My interests are web development, mobile apps, machine learning and artificial intelligence.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2>Technical skills</h2>
+    <div class="skills">
+      <div>
+        <h3>Programming languages</h3>
+        <ul class="tags"><li>Java</li><li>C++</li><li>SQL</li><li>C# .NET</li><li>JavaScript</li><li>Dart</li></ul>
+      </div>
+      <div>
+        <h3>Libraries and frameworks</h3>
+        <ul class="tags"><li>Blazor WebAssembly</li><li>ASP.NET Core</li><li>ML.NET</li><li>Matplotlib</li><li>Flutter</li><li>Qt</li><li>React.js</li><li>Node.js</li></ul>
+      </div>
+      <div>
+        <h3>Tools and platforms</h3>
+        <ul class="tags"><li>Cisco Packet Tracer</li><li>Wireshark</li><li>MongoDB</li><li>SQLite</li><li>Firebase</li></ul>
+      </div>
+      <div>
+        <h3>Domains</h3>
+        <ul class="tags"><li>Web development</li><li>Machine learning</li><li>Artificial intelligence</li><li>Mobile app development</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (newest first) -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+
+    <article class="project">
+      <div class="meta">
+        <time>Apr 2026 – May 2026</time>
+        <p class="stack">Blazor, ML.NET, Fluxor, Firebase, MongoDB</p>
+      </div>
+      <div class="body">
+        <h3>StellarForge: AI-powered productivity system for ADHD users</h3>
+        <ul>
+          <li>Built a full-stack productivity platform for students with ADHD, turning tasks into gamified missions with dynamic UI and XP-based progression.</li>
+          <li>Integrated ML.NET to break tasks into 3–7 actionable steps in under 1 second, improving focus and usability.</li>
+          <li>Developed a scalable 3-tier architecture with Fluxor state management, Firebase OAuth + JWT authentication, and MongoDB persistence.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="meta">
+        <time>Nov 2025 – Dec 2025</time>
+        <p class="stack">Flutter, Dart</p>
+      </div>
+      <div class="body">
+        <h3>Movie rating and tracking application</h3>
+        <ul>
+          <li>Built a cross-platform movie app that lets users rate and track 1,000+ films.</li>
+          <li>Integrated REST APIs with 99% data retrieval accuracy for posters, ratings and metadata.</li>
+          <li>Tested with 12+ users and improved the navigation flow based on their feedback.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="meta">
+        <time>Nov 2025 – Dec 2025</time>
+        <p class="stack">Data structures, GUI</p>
+      </div>
+      <div class="body">
+        <h3>E-commerce platform</h3>
+        <ul>
+          <li>Built an e-commerce system managing 200+ simulated products.</li>
+          <li>Implemented sorting and searching algorithms, improving retrieval efficiency to O(n log n).</li>
+          <li>Designed the GUI front end and structured backend logic; testing showed 97% functionality accuracy.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="meta">
+        <time>Apr 2025 – May 2025</time>
+        <p class="stack">Qt, OOP, API integration</p>
+      </div>
+      <div class="body">
+        <h3>Women safety application</h3>
+        <ul>
+          <li>Developed a real-time safety system with a modular OOP architecture in Qt (10+ classes).</li>
+          <li>Implemented live location sharing with emergency alerts triggered within 2 seconds.</li>
+          <li>Validated performance through multiple simulations, achieving 95% confidence in alert reliability.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section narrow">
+    <h2>Education</h2>
+    <div class="edu">
+      <div>
+        <h3>Air University</h3>
+        <p>Bachelors of Computer Science</p>
+        <p class="muted">Coursework: Programming Fundamentals, Object Oriented Programming, Web Development, Database Systems, Data Structures, Mobile App Development</p>
+      </div>
+      <div class="edu-side">
+        <p>Sep 2024 – June 2028</p>
+        <p class="muted">Islamabad, Pakistan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <h2>Get in touch</h2>
+    <a class="mail" href="mailto:uswamasood02@gmail.com">uswamasood02@gmail.com</a>
+    <ul class="contact-list">
+      <li><a href="tel:+923157092724">(+92) 315-7092724</a></li>
+      <li><a href="https://linkedin.com/in/uswamasood" target="_blank" rel="noopener">linkedin.com/in/uswamasood</a></li>
+      <li>Islamabad, PK 44000</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Uswa Masood</p>
+</footer>
+
+</body>
+</html>

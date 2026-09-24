@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StellarForge: A Gamified, AI-Assisted Task Manager for Students with ADHD</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<p class="template-note">To get a PDF: press Ctrl+P (Cmd+P on Mac), choose "Save as PDF", and set margins to "None". This note will not print.</p>
+
+<article class="page">
+
+  <h1 class="paper-title">StellarForge: A Gamified, AI-Assisted Task Management System for University Students with ADHD</h1>
+
+  <div class="authors single">
+    <div class="author">
+      <span class="name">Uswa Masood</span>
+      <span>Department of Computer Science</span>
+      <span>Air University</span>
+      <span>Islamabad, Pakistan</span>
+      <span>uswamasood02@gmail.com</span>
+    </div>
+  </div>
+
+  <div class="columns">
+
+    <p class="abstract"><em>Abstract</em>—Students with attention-deficit/hyperactivity disorder often struggle to start and finish academic tasks that look large and unstructured. This paper presents StellarForge, a full-stack web application that turns everyday tasks into gamified missions and uses a machine learning component to split each task into three to seven small, actionable steps in under one second. The system follows a three-tier architecture built on Blazor WebAssembly, ASP.NET Core, and MongoDB, with Fluxor for predictable client state and Firebase authentication combined with JSON Web Tokens for secure access. Progress is rewarded through an experience-point model that gives immediate feedback for each completed step. We describe the design goals, architecture, task decomposition service, and gamification model, and we outline a plan for evaluating the system with student users.</p>
+
+    <p class="keywords"><em>Keywords</em>—gamification, ADHD, task decomposition, student productivity, Blazor WebAssembly, ML.NET</p>
+
+    <h2>Introduction</h2>
+    <p>Attention-deficit/hyperactivity disorder (ADHD) is a neurodevelopmental condition characterized by persistent patterns of inattention and hyperactivity-impulsivity [1]. University life is demanding for students with ADHD because it depends on skills that the condition tends to affect, such as planning, sustained attention, and self-regulation [2]. A single assignment such as "write the project report" gives no clear starting point, and this ambiguity often leads to delay.</p>
+    <p>Most task management tools store tasks but do not help students begin them. StellarForge addresses this gap in two ways. First, it breaks each task into a short sequence of concrete steps. Second, it presents those steps as missions with visible progress and rewards, so that each small action produces immediate feedback.</p>
+    <p>The contributions of this paper are: (1) a three-tier web architecture for a gamified task manager, (2) a task decomposition service built on ML.NET that returns three to seven steps per task, and (3) an experience-point progression model designed around short feedback loops. The rest of the paper is organized as follows. Section II reviews related work, Section III describes the system design, Sections IV and V present the decomposition service and the gamification model, Section VI summarizes the implementation, and Section VII concludes.</p>
+
+    <h2>Related Work</h2>
+    <p>Gamification is commonly defined as the use of game design elements in non-game contexts [3]. A review of empirical studies found that gamification usually produces positive effects, although the results depend strongly on the context and on the users [4]. Self-determination theory explains part of this effect: activities that support feelings of competence and autonomy sustain intrinsic motivation [5]. StellarForge applies this idea by making progress visible and by letting the student choose which mission to start.</p>
+    <p>For ADHD, a widely cited theory links the condition to weak behavioral inhibition, which in turn affects sustained attention and executive functions [2]. This motivates external structure, such as small steps and immediate feedback, as a form of support. On the technical side, ML.NET provides a framework for adding machine learning to .NET applications without leaving the .NET ecosystem [6], which fits the technology stack chosen for this project.</p>
+
+    <h2>System Design</h2>
+
+    <h3>Design Goals</h3>
+    <p>Three goals guided the design. The first is low friction: the student should be able to add a task and see actionable steps within seconds. The second is clear feedback: every completed step should be acknowledged visibly. The third is maintainability: the client, server, and data layers should be separable so that each can change independently.</p>
+
+    <h3>Three-Tier Architecture</h3>
+    <p>StellarForge uses a three-tier architecture, shown in Fig. 1. The presentation tier is a Blazor WebAssembly client [7] that runs in the browser. The application tier is an ASP.NET Core web API that hosts the business logic and the ML.NET decomposition service. The data tier is a MongoDB database that persists users, tasks, steps, and progress. Each tier communicates only with its neighbor, which keeps responsibilities separate.</p>
+
+    <figure>
+      <svg viewBox="0 0 340 200" role="img" aria-label="Three-tier architecture of StellarForge" font-family="Times New Roman, Times, serif" font-size="9" fill="none" stroke="#000" stroke-width="1">
+        <rect x="8" y="8" width="230" height="50"/>
+        <text x="123" y="26" text-anchor="middle" fill="#000" stroke="none" font-weight="700">Presentation tier</text>
+        <text x="123" y="42" text-anchor="middle" fill="#000" stroke="none">Blazor WebAssembly client + Fluxor store</text>
+        <rect x="8" y="76" width="230" height="50"/>
+        <text x="123" y="94" text-anchor="middle" fill="#000" stroke="none" font-weight="700">Application tier</text>
+        <text x="123" y="110" text-anchor="middle" fill="#000" stroke="none">ASP.NET Core API + ML.NET decomposition</text>
+        <rect x="8" y="144" width="230" height="48"/>
+        <text x="123" y="162" text-anchor="middle" fill="#000" stroke="none" font-weight="700">Data tier</text>
+        <text x="123" y="178" text-anchor="middle" fill="#000" stroke="none">MongoDB (users, tasks, steps, XP)</text>
+        <path d="M123 58 V76 M123 126 V144"/>
+        <rect x="260" y="8" width="72" height="50"/>
+        <text x="296" y="30" text-anchor="middle" fill="#000" stroke="none">Firebase</text>
+        <text x="296" y="43" text-anchor="middle" fill="#000" stroke="none">OAuth</text>
+        <path d="M238 33 H260" stroke-dasharray="3 2"/>
+        <rect x="260" y="76" width="72" height="50"/>
+        <text x="296" y="98" text-anchor="middle" fill="#000" stroke="none">JWT</text>
+        <text x="296" y="111" text-anchor="middle" fill="#000" stroke="none">validation</text>
+        <path d="M238 101 H260" stroke-dasharray="3 2"/>
+      </svg>
+      <figcaption>Three-tier architecture of StellarForge. Dashed lines show authentication traffic.</figcaption>
+    </figure>
+
+    <h3>State Management and Authentication</h3>
+    <p>The client keeps its state in a Fluxor store [8], which follows the unidirectional data flow pattern. Every change, such as completing a step or gaining experience points, is expressed as an action handled by a reducer, so the interface always reflects a single source of truth. Users sign in through Firebase OAuth [9]. After sign-in, the client sends a JSON Web Token [10] with each request, and the API validates it before touching any data.</p>
+
+    <h2>Intelligent Task Decomposition</h2>
+    <p>The decomposition service is the feature that most directly targets task initiation. It accepts a free-text task title and returns an ordered list of three to seven steps. The lower bound prevents trivial output, and the upper bound prevents a long list that would itself become overwhelming. The service is implemented with ML.NET and exposed through the API tier, so the client requires no machine learning code.</p>
+    <p>Response time matters for this audience. A student who waits several seconds may lose the impulse to begin, so the service is designed to respond in under one second. The steps are then stored with the task, and each one becomes an individual item that the student can complete and be rewarded for.</p>
+
+    <h2>Gamification Model</h2>
+
+    <h3>Missions</h3>
+    <p>Each task becomes a mission, and its steps become objectives inside that mission. The interface uses a space theme with a dynamic layout that updates as objectives are completed. The theme is not only decorative: it gives the student a consistent story in which small actions move the mission forward.</p>
+
+    <h3>Experience Points</h3>
+    <p>Students earn experience points (XP) for completing steps and missions, and accumulated XP drives a progression system. Rewards are granted at the moment of completion rather than at the end of a long task, which keeps the feedback loop short. This design choice reflects the finding that immediate, competence-supporting feedback helps sustain motivation [5].</p>
+
+    <h2>Implementation and Evaluation</h2>
+    <p>Table I summarizes the technologies used in each layer. The client and server are both written in C#, which lets the two share models and reduces mismatches between them. The decomposition service returns between three and seven steps in under one second in our tests.</p>
+
+    <table>
+      <caption>Technology Stack of StellarForge</caption>
+      <thead>
+        <tr><th>Layer</th><th>Technology</th><th>Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Client</td><td>Blazor WebAssembly</td><td>Browser interface</td></tr>
+        <tr><td>State</td><td>Fluxor</td><td>Predictable store</td></tr>
+        <tr><td>Server</td><td>ASP.NET Core</td><td>Web API</td></tr>
+        <tr><td>AI</td><td>ML.NET</td><td>Task decomposition</td></tr>
+        <tr><td>Security</td><td>Firebase, JWT</td><td>Sign-in, access</td></tr>
+        <tr><td>Data</td><td>MongoDB</td><td>Persistence</td></tr>
+      </tbody>
+    </table>
+
+    <p>The evaluation so far is technical. We have not yet run a formal study with students who have ADHD, so this paper makes no claim about improved focus or task completion. We plan to compare StellarForge with a conventional to-do list, measuring task start time, completion rate, and self-reported usability.</p>
+
+    <h2>Conclusion and Future Work</h2>
+    <p>This paper presented StellarForge, a gamified task manager that combines automatic task decomposition, immediate XP rewards, and a three-tier architecture built on Blazor WebAssembly, ASP.NET Core, and MongoDB. The system is designed to reduce the effort of starting tasks for students with ADHD. Future work includes the user study described above, adaptive step sizes based on how each student performs, and accessibility options such as reduced motion and adjustable reward frequency.</p>
+
+    <h2 class="unnumbered">References</h2>
+    <ol class="references">
+      <li>American Psychiatric Association, <i>Diagnostic and Statistical Manual of Mental Disorders</i>, 5th ed. Arlington, VA, USA: American Psychiatric Publishing, 2013.</li>
+      <li>R. A. Barkley, "Behavioral inhibition, sustained attention, and executive functions: Constructing a unifying theory of ADHD," <i>Psychol. Bull.</i>, vol. 121, no. 1, pp. 65–94, 1997.</li>
+      <li>S. Deterding, D. Dixon, R. Khaled, and L. Nacke, "From game design elements to gamefulness: Defining 'gamification'," in <i>Proc. 15th Int. Academic MindTrek Conf.</i>, Tampere, Finland, 2011, pp. 9–15.</li>
+      <li>J. Hamari, J. Koivisto, and H. Sarsa, "Does gamification work? A literature review of empirical studies on gamification," in <i>Proc. 47th Hawaii Int. Conf. Syst. Sci.</i>, Waikoloa, HI, USA, 2014, pp. 3025–3034.</li>
+      <li>R. M. Ryan and E. L. Deci, "Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being," <i>Amer. Psychologist</i>, vol. 55, no. 1, pp. 68–78, 2000.</li>
+      <li>Z. Ahmed <i>et al.</i>, "Machine learning at Microsoft with ML.NET," in <i>Proc. 25th ACM SIGKDD Int. Conf. Knowl. Discovery Data Mining</i>, Anchorage, AK, USA, 2019, pp. 2448–2458.</li>
+      <li>Microsoft, "ASP.NET Core Blazor," Microsoft Learn. [Online]. Available: https://learn.microsoft.com/aspnet/core/blazor/</li>
+      <li>P. Morris, "Fluxor," GitHub repository. [Online]. Available: https://github.com/mrpmorris/Fluxor</li>
+      <li>Google, "Firebase Authentication," Firebase Documentation. [Online]. Available: https://firebase.google.com/docs/auth</li>
+      <li>M. Jones, J. Bradley, and N. Sakimura, "JSON Web Token (JWT)," IETF, RFC 7519, May 2015.</li>
+    </ol>
+
+  </div>
+
+  <footer class="page-footer">
+    <p>XXX-X-XXXX-XXXX-X/XX/$XX.00 ©20XX IEEE</p>
+  </footer>
+
+</article>
+
+</body>
+</html>
