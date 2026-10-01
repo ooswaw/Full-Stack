@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facebook-style Homepage</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="left">
+    <div class="logo">f</div>
+    <label class="search"><input type="text" placeholder="Search"></label>
+  </div>
+  <nav class="nav">
+    <a href="#" class="active" title="Home">🏠</a>
+    <a href="#" title="Friends">👥</a>
+    <a href="#" title="Watch">▶️</a>
+    <a href="#" title="Marketplace">🏪</a>
+    <a href="#" title="Groups">👪</a>
+  </nav>
+  <div class="right">
+    <button class="icon-btn" title="Menu">⋯</button>
+    <button class="icon-btn" title="Messenger">💬</button>
+    <button class="icon-btn" title="Notifications">🔔</button>
+    <div class="avatar a1">U</div>
+  </div>
+</header>
+
+<main class="layout">
+  <!-- Left sidebar -->
+  <aside class="sidebar left-col">
+    <a href="#" class="side-item"><div class="avatar a1">U</div>Uswa</a>
+    <a href="#" class="side-item"><span class="ico">👥</span>Friends</a>
+    <a href="#" class="side-item"><span class="ico">🕒</span>Memories</a>
+    <a href="#" class="side-item"><span class="ico">🔖</span>Saved</a>
+    <a href="#" class="side-item"><span class="ico">👪</span>Groups</a>
+    <a href="#" class="side-item"><span class="ico">▶️</span>Video</a>
+    <a href="#" class="side-item"><span class="ico">🏪</span>Marketplace</a>
+    <a href="#" class="side-item"><span class="ico">📅</span>Events</a>
+  </aside>
+
+  <!-- Feed -->
+  <section class="feed">
+    <div class="stories">
+      <div class="story s1">Create story</div>
+      <div class="story s2">Ayesha</div>
+      <div class="story s3">Hamza</div>
+      <div class="story s4">Sara</div>
+    </div>
+
+    <div class="card composer" style="margin-top:16px">
+      <div class="composer-top">
+        <div class="avatar a1">U</div>
+        <input type="text" placeholder="What's on your mind, Uswa?">
+      </div>
+      <div class="composer-actions">
+        <button>🎥 Live video</button>
+        <button>🖼️ Photo/video</button>
+        <button>😊 Feeling</button>
+      </div>
+    </div>
+
+    <article class="card">
+      <div class="post-head">
+        <div class="avatar a2">A</div>
+        <div><b>Ayesha Khan</b><small>2h · 🌐</small></div>
+      </div>
+      <p class="post-text">Finally submitted the database project. Time to sleep for a week! 😴</p>
+      <div class="post-stats"><span>👍❤️ 48</span><span>7 comments · 2 shares</span></div>
+      <div class="post-actions">
+        <button class="like">👍 Like</button>
+        <button>💬 Comment</button>
+        <button>↪️ Share</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="post-head">
+        <div class="avatar a3">H</div>
+        <div><b>Hamza Ali</b><small>5h · 🌐</small></div>
+      </div>
+      <p class="post-text">Sunset from the Margalla Hills trail today.</p>
+      <div class="post-media"></div>
+      <div class="post-stats"><span>👍 132</span><span>21 comments · 5 shares</span></div>
+      <div class="post-actions">
+        <button class="like">👍 Like</button>
+        <button>💬 Comment</button>
+        <button>↪️ Share</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- Right sidebar -->
+  <aside class="sidebar">
+    <h4>Contacts</h4>
+    <a href="#" class="side-item"><div class="avatar a2">A</div>Ayesha Khan</a>
+    <a href="#" class="side-item"><div class="avatar a3">H</div>Hamza Ali</a>
+    <a href="#" class="side-item"><div class="avatar a4">S</div>Sara Ahmed</a>
+    <a href="#" class="side-item"><div class="avatar a5">B</div>Bilal Raza</a>
+  </aside>
+</main>
+
+<script>
+  // Toggle the "Like" button colour
+  document.querySelectorAll('.like').forEach(btn =>
+    btn.addEventListener('click', () => btn.classList.toggle('liked'))
+  );
+</script>
+</body>
+</html>
