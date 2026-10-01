@@ -1,0 +1,32 @@
+/* Bootstrap handles layout, borders and colors; these are just small tweaks. */
+
+.timetable {
+    min-width: 1000px;      /* keeps cells readable; table scrolls sideways on small screens */
+    table-layout: fixed;
+}
+
+.timetable th,
+.timetable td {
+    height: 70px;
+    font-size: 11px;
+}
+
+.timetable thead th {
+    height: 45px;
+    font-size: 11px;
+}
+
+.timetable .day {
+    width: 70px;
+    font-size: 24px;
+}
+
+.timetable td b {
+    font-size: 12px;
+}
+
+.timetable .room {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #555;
+}

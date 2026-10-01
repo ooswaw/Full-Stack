@@ -1,0 +1,89 @@
+/* Bootstrap handles layout; this file keeps the original look (palette, fonts, photo frame). */
+
+:root {
+  --indigo: #33318f;
+  --indigo-deep: #25236b;
+  --lilac: #dcdaf7;
+  --mint: #5fd4b0;
+  --paper: #f6f5fb;
+  --text: #1f1d45;
+  --muted: #5f5d7a;
+  --line: #d9d7ec;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+
+  /* Point Bootstrap at our theme */
+  --bs-body-font-family: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --bs-body-font-size: 1.0625rem;
+  --bs-body-color: var(--text);
+  --bs-body-bg: var(--paper);
+  --bs-link-color: var(--indigo);
+  --bs-link-hover-color: var(--indigo-deep);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+:focus-visible { outline: 3px solid var(--mint); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; }
+h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 28px; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+.muted { color: var(--muted); }
+.muted a { color: inherit; }
+
+/* Header */
+.brand { font-family: var(--display); font-weight: 800; font-size: 1.15rem; }
+.site-header .nav-link { font-weight: 500; color: var(--muted); }
+.site-header .nav-link:hover { color: var(--indigo); }
+
+/* Hero */
+.hero { background: var(--indigo); padding: clamp(48px, 8vw, 104px) clamp(20px, 5vw, 64px); }
+.hero h1 { letter-spacing: -0.02em; font-size: clamp(3rem, 8vw, 6rem); font-family: var(--display); font-weight: 800; }
+.role { max-width: 30ch; color: var(--lilac); }
+.btn { font-weight: 600; transition: transform .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-mint { background: var(--mint); border-color: var(--mint); color: var(--indigo-deep); }
+.btn-mint:hover { background: #7ae0c2; border-color: #7ae0c2; color: var(--indigo-deep); }
+
+/* Profile picture container */
+.photo { position: relative; width: min(100%, 340px); aspect-ratio: 4 / 5; border-radius: 999px 999px 28px 28px; background: var(--lilac); border: 6px solid #fff; box-shadow: 14px 14px 0 var(--mint); overflow: hidden; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo-fallback { position: absolute; inset: 0; display: grid; place-items: center; font: 800 5rem var(--display); color: var(--indigo); }
+
+/* Sections */
+.section { padding: clamp(48px, 7vw, 88px) 0; }
+.section p + p { margin-top: 14px; }
+
+/* Skills */
+.tag { background: #fff; color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 4px 12px; font-size: .95rem; font-weight: 400; }
+
+/* Projects */
+.project { padding: 32px 0; margin: 0; border-top: 2px solid var(--indigo); }
+.project:last-child { border-bottom: 2px solid var(--indigo); }
+.stack { margin-top: 6px; font-size: .95rem; color: var(--muted); }
+.project h3 { font-size: 1.4rem; margin-bottom: 12px; }
+.bullets { list-style: none; padding: 0; }
+.bullets li { position: relative; padding-left: 20px; margin-top: 8px; }
+.bullets li::before { content: ""; position: absolute; left: 0; top: .65em; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); }
+
+/* Education */
+.edu { border-left: 6px solid var(--indigo) !important; border-radius: 0 12px 12px 0; }
+.edu h3 { font-size: 1.4rem; }
+@media (min-width: 768px) { .edu-side { white-space: nowrap; } }
+
+/* Contact */
+.mail { display: inline-block; font: 800 clamp(1.4rem, 4vw, 2.6rem) var(--display); color: var(--indigo); text-decoration-thickness: 3px; text-underline-offset: 6px; text-decoration-color: var(--mint); word-break: break-all; }
+
+.site-footer { color: var(--muted); font-size: .9rem; border-color: var(--line) !important; }
+
+/* Hero entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-text > * { animation: rise .6s ease both; }
+  .hero-text .role { animation-delay: .12s; }
+  .hero-text .d-flex { animation-delay: .24s; }
+  .photo { animation: rise .7s .1s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+}
+
+/* Small screens */
+@media (max-width: 767.98px) {
+  .photo { width: min(70%, 280px); }
+}

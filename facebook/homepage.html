@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facebook-style Homepage</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="topbar sticky-top bg-white shadow-sm">
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center flex-nowrap">
+
+      <div class="col d-flex align-items-center gap-2">
+        <a href="#" class="logo" aria-label="Home">f</a>
+        <div class="input-group search d-none d-md-flex">
+          <span class="input-group-text border-0 bg-transparent pe-1"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control border-0 bg-transparent shadow-none ps-1" placeholder="Search">
+        </div>
+        <button class="icon-btn d-md-none" title="Search"><i class="bi bi-search"></i></button>
+      </div>
+
+      <nav class="col-auto d-flex main-nav">
+        <a href="#" class="active" title="Home"><i class="bi bi-house-door-fill"></i></a>
+        <a href="#" title="Friends"><i class="bi bi-people-fill"></i></a>
+        <a href="#" title="Watch" class="d-none d-sm-grid"><i class="bi bi-play-btn-fill"></i></a>
+        <a href="#" title="Marketplace" class="d-none d-sm-grid"><i class="bi bi-shop"></i></a>
+        <a href="#" title="Groups" class="d-none d-md-grid"><i class="bi bi-collection-fill"></i></a>
+      </nav>
+
+      <div class="col d-flex justify-content-end align-items-center gap-2">
+        <button class="icon-btn d-none d-lg-grid" title="Menu"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+        <button class="icon-btn position-relative" title="Messenger">
+          <i class="bi bi-chat-dots-fill"></i>
+        </button>
+        <button class="icon-btn position-relative" title="Notifications">
+          <i class="bi bi-bell-fill"></i>
+          <span class="badge rounded-pill bg-danger notif">3</span>
+        </button>
+        <div class="avatar a1">U<img src="https://i.pravatar.cc/120?img=47" alt="" onerror="this.remove()"></div>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<main class="container-fluid py-3 px-lg-4">
+  <div class="row g-3 justify-content-center">
+
+    <!-- Left sidebar -->
+    <aside class="col-lg-3 d-none d-lg-block">
+      <div class="side-sticky list-group list-group-flush bg-transparent">
+        <a href="#" class="side-item"><div class="avatar a1">U<img src="uswapic.jpeg" alt="" onerror="this.remove()"></div>Uswa</a>
+        <a href="#" class="side-item"><i class="bi bi-people-fill ico text-primary"></i>Friends</a>
+        <a href="#" class="side-item"><i class="bi bi-clock-history ico text-info"></i>Memories</a>
+        <a href="#" class="side-item"><i class="bi bi-bookmark-fill ico text-danger"></i>Saved</a>
+        <a href="#" class="side-item"><i class="bi bi-collection-fill ico text-primary"></i>Groups</a>
+        <a href="#" class="side-item"><i class="bi bi-play-btn-fill ico text-info"></i>Video</a>
+        <a href="#" class="side-item"><i class="bi bi-shop ico text-primary"></i>Marketplace</a>
+        <a href="#" class="side-item"><i class="bi bi-calendar-event-fill ico text-danger"></i>Events</a>
+      </div>
+    </aside>
+
+    <!-- Feed -->
+    <section class="col-12 col-lg-9 col-xl-6 feed">
+
+      <div class="row row-cols-2 row-cols-sm-4 g-2 mb-3 stories">
+        <div class="col">
+          <a href="#" class="story story-create">
+            <img class="story-img" src="uswapic.jpeg" alt="" onerror="this.remove()">
+            <span class="story-create-body">
+              <span class="story-add"><i class="bi bi-plus-lg"></i></span>
+              Create story
+            </span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="#" class="story s2">
+            <img class="story-img" src="https://picsum.photos/seed/story-ayesha/400/700" alt="" loading="lazy" onerror="this.remove()">
+            <div class="avatar a2 story-avatar">A<img src="https://i.pravatar.cc/120?img=5" alt="" onerror="this.remove()"></div>
+            <span class="story-name">Ayesha</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="#" class="story s3">
+            <img class="story-img" src="https://picsum.photos/seed/story-hamza/400/700" alt="" loading="lazy" onerror="this.remove()">
+            <div class="avatar a3 story-avatar">H<img src="https://i.pravatar.cc/120?img=12" alt="" onerror="this.remove()"></div>
+            <span class="story-name">Hamza</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="#" class="story s4">
+            <img class="story-img" src="https://picsum.photos/seed/story-sara/400/700" alt="" loading="lazy" onerror="this.remove()">
+            <div class="avatar a4 story-avatar">S<img src="https://i.pravatar.cc/120?img=32" alt="" onerror="this.remove()"></div>
+            <span class="story-name">Sara</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card composer mb-3">
+        <div class="card-body pb-2">
+          <div class="d-flex gap-2 pb-3 border-bottom">
+            <div class="avatar a1">U<img src="https://i.pravatar.cc/120?img=47" alt="" onerror="this.remove()"></div>
+            <input type="text" class="form-control rounded-pill bg-body-secondary border-0 shadow-none" placeholder="What's on your mind, Uswa?">
+          </div>
+          <div class="d-flex pt-2 gap-1">
+            <button class="btn btn-light flex-fill border-0 fw-semibold text-secondary"><i class="bi bi-camera-video-fill text-danger me-1"></i><span class="d-none d-sm-inline">Live video</span></button>
+            <button class="btn btn-light flex-fill border-0 fw-semibold text-secondary"><i class="bi bi-images text-success me-1"></i><span class="d-none d-sm-inline">Photo/video</span></button>
+            <button class="btn btn-light flex-fill border-0 fw-semibold text-secondary"><i class="bi bi-emoji-smile-fill text-warning me-1"></i><span class="d-none d-sm-inline">Feeling</span></button>
+          </div>
+        </div>
+      </div>
+
+      <article class="card post mb-3">
+        <div class="d-flex align-items-center gap-2 px-3 pt-3">
+          <div class="avatar a2 avatar-lg">A<img src="https://i.pravatar.cc/120?img=5" alt="" onerror="this.remove()"></div>
+          <div class="lh-sm"><b class="d-block">Ayesha Khan</b><small class="text-secondary">2h · <i class="bi bi-globe-americas"></i></small></div>
+          <button class="icon-btn ms-auto" title="More"><i class="bi bi-three-dots"></i></button>
+        </div>
+        <p class="post-text">Finally submitted the database project. Time to sleep for a week! 😴</p>
+        <div class="d-flex justify-content-between px-3 pb-2 text-secondary small">
+          <span><span class="reaction r-like"><i class="bi bi-hand-thumbs-up-fill"></i></span><span class="reaction r-love"><i class="bi bi-heart-fill"></i></span> 48</span>
+          <span>7 comments · 2 shares</span>
+        </div>
+        <div class="d-flex mx-3 py-1 border-top post-actions">
+          <button class="btn like"><i class="bi bi-hand-thumbs-up me-1"></i>Like</button>
+          <button class="btn"><i class="bi bi-chat me-1"></i>Comment</button>
+          <button class="btn"><i class="bi bi-share me-1"></i>Share</button>
+        </div>
+      </article>
+
+      <article class="card post mb-3">
+        <div class="d-flex align-items-center gap-2 px-3 pt-3">
+          <div class="avatar a3 avatar-lg">H<img src="https://i.pravatar.cc/120?img=12" alt="" onerror="this.remove()"></div>
+          <div class="lh-sm"><b class="d-block">Hamza Ali</b><small class="text-secondary">5h · <i class="bi bi-globe-americas"></i></small></div>
+          <button class="icon-btn ms-auto" title="More"><i class="bi bi-three-dots"></i></button>
+        </div>
+        <p class="post-text">Sunset from the Margalla Hills trail today.</p>
+        <img class="post-media" src="https://picsum.photos/seed/margalla-sunset/1200/800" alt="Sunset on the Margalla Hills trail" loading="lazy">
+        <div class="d-flex justify-content-between px-3 py-2 text-secondary small">
+          <span><span class="reaction r-like"><i class="bi bi-hand-thumbs-up-fill"></i></span> 132</span>
+          <span>21 comments · 5 shares</span>
+        </div>
+        <div class="d-flex mx-3 py-1 border-top post-actions">
+          <button class="btn like"><i class="bi bi-hand-thumbs-up me-1"></i>Like</button>
+          <button class="btn"><i class="bi bi-chat me-1"></i>Comment</button>
+          <button class="btn"><i class="bi bi-share me-1"></i>Share</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Right sidebar -->
+    <aside class="col-xl-3 d-none d-xl-block">
+      <div class="side-sticky">
+        <div class="d-flex justify-content-between align-items-center px-2">
+          <h4 class="h6 fw-semibold text-secondary mb-0 py-2">Contacts</h4>
+          <span class="text-secondary"><i class="bi bi-search me-2"></i><i class="bi bi-three-dots"></i></span>
+        </div>
+        <a href="#" class="side-item"><span class="avatar-wrap online"><div class="avatar a2">A<img src="https://i.pravatar.cc/120?img=5" alt="" onerror="this.remove()"></div></span>Ayesha Khan</a>
+        <a href="#" class="side-item"><span class="avatar-wrap online"><div class="avatar a3">H<img src="https://i.pravatar.cc/120?img=12" alt="" onerror="this.remove()"></div></span>Hamza Ali</a>
+        <a href="#" class="side-item"><span class="avatar-wrap"><div class="avatar a4">S<img src="https://i.pravatar.cc/120?img=32" alt="" onerror="this.remove()"></div></span>Sara Ahmed</a>
+        <a href="#" class="side-item"><span class="avatar-wrap online"><div class="avatar a5">B<img src="https://i.pravatar.cc/120?img=15" alt="" onerror="this.remove()"></div></span>Bilal Raza</a>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Toggle the "Like" button (colour + filled icon)
+  document.querySelectorAll('.like').forEach(btn =>
+    btn.addEventListener('click', () => {
+      const liked = btn.classList.toggle('liked');
+      const icon = btn.querySelector('i');
+      icon.classList.toggle('bi-hand-thumbs-up', !liked);
+      icon.classList.toggle('bi-hand-thumbs-up-fill', liked);
+    })
+  );
+</script>
+</body>
+</html>
